@@ -1,0 +1,1040 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/Api/BetSlipInfo": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "注單資訊"
+                ],
+                "summary": "取得注單資訊",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Token",
+                        "name": "token",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.BetSlipInfoResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/BetSlip/BetSlipDetails": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "注單"
+                ],
+                "summary": "注單詳情",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "CCVY1h5pfvunb000694",
+                        "description": "局號",
+                        "name": "RoundID",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.BetSlipDetailsResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/BetSlip/BetSlipList": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "注單"
+                ],
+                "summary": "注單列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "會員編號",
+                        "name": "MemberID",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "局號",
+                        "name": "RoundID",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "2023-07-01 00:00:00",
+                        "description": "開始時間",
+                        "name": "sDate",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "2023-07-24 23:59:59",
+                        "description": "結束時間",
+                        "name": "eDate",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "0",
+                        "description": "跳過筆數",
+                        "name": "Skip",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "10",
+                        "description": "顯示筆數",
+                        "name": "Show",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "MemberAccount",
+                        "description": "排序欄位",
+                        "name": "Field",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "desc",
+                        "description": "排序類型 asc(小-\u003e大)、desc(大-\u003e小)",
+                        "name": "OrderType",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.BetSlipListResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/GameReport/AllGameDataStatistical": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "遊戲統計"
+                ],
+                "summary": "遊戲綜合統計",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "2023-07-01 00:00:00",
+                        "description": "開始時間",
+                        "name": "sDate",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "2023-07-24 00:00:00",
+                        "description": "結束時間",
+                        "name": "eDate",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.AllGameDataStatisticalResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/Member/MemberList": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "會員"
+                ],
+                "summary": "取得會員列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "會員編號",
+                        "name": "MemberID",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "0",
+                        "description": "跳過筆數",
+                        "name": "Skip",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "10",
+                        "description": "顯示筆數",
+                        "name": "Show",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "MemberAccount",
+                        "description": "排序欄位",
+                        "name": "Field",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "desc",
+                        "description": "排序類型 asc(小-\u003e大)、desc(大-\u003e小)",
+                        "name": "OrderType",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.MemberListResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/Token/ChangeTimeZone": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登入授權令牌、換發"
+                ],
+                "summary": "變更時區",
+                "parameters": [
+                    {
+                        "description": "RequestBody",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.ChangeTimeZoneRequestBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.ChangeTimeZoneResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/Token/SignIn": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登入授權令牌、換發"
+                ],
+                "summary": "會員登入",
+                "parameters": [
+                    {
+                        "description": "RequestBody",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.SignInRequestBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.SignInResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/report": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "報表"
+                ],
+                "summary": "取得後台報表",
+                "parameters": [
+                    {
+                        "description": "RequestBody",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendReportRequestBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendReportResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/token/SignOut": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登入授權令牌、換發"
+                ],
+                "summary": "會員登出",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "訪問令牌",
+                        "name": "access_token",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backgroundmanager_handler.SignOutResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "backgroundmanager_handler.AllGameDataStatisticalResponse": {
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "description": "資料筆數",
+                    "type": "integer"
+                },
+                "Data": {
+                    "description": "資料給予的地方",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/backgroundmanager_handler.AllGameDataStatisticalResponseData"
+                    }
+                },
+                "Status": {
+                    "description": "狀態",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendHttpResponseStatus"
+                        }
+                    ]
+                }
+            }
+        },
+        "backgroundmanager_handler.AllGameDataStatisticalResponseData": {
+            "type": "object",
+            "properties": {
+                "Bet": {
+                    "description": "下注",
+                    "type": "number"
+                },
+                "GameCode": {
+                    "description": "遊戲代碼",
+                    "type": "string"
+                },
+                "GameName": {
+                    "description": "遊戲名稱",
+                    "type": "string"
+                },
+                "Payout": {
+                    "description": "派彩",
+                    "type": "number"
+                },
+                "WinLose": {
+                    "description": "輸贏",
+                    "type": "number"
+                }
+            }
+        },
+        "backgroundmanager_handler.BackendHttpResponseStatus": {
+            "type": "object",
+            "properties": {
+                "Code": {
+                    "description": "狀態碼",
+                    "type": "string"
+                },
+                "Message": {
+                    "description": "訊息",
+                    "type": "string"
+                },
+                "Timestamp": {
+                    "description": "時間戳",
+                    "type": "integer"
+                }
+            }
+        },
+        "backgroundmanager_handler.BackendReportDetail": {
+            "type": "object",
+            "properties": {
+                "bet": {
+                    "description": "下注",
+                    "type": "number"
+                },
+                "count": {
+                    "description": "筆數",
+                    "type": "integer"
+                },
+                "date": {
+                    "description": "日期",
+                    "type": "string"
+                },
+                "gameCode": {
+                    "description": "遊戲代碼",
+                    "type": "string"
+                },
+                "gameName": {
+                    "description": "遊戲名稱",
+                    "type": "string"
+                },
+                "gameTeam": {
+                    "description": "團隊",
+                    "type": "string"
+                },
+                "income": {
+                    "description": "收入",
+                    "type": "number"
+                },
+                "jackpot": {
+                    "description": "彩池",
+                    "type": "integer"
+                },
+                "rake": {
+                    "description": "抽水",
+                    "type": "integer"
+                },
+                "rtp": {
+                    "description": "RTP",
+                    "type": "number"
+                },
+                "win": {
+                    "description": "贏分",
+                    "type": "number"
+                }
+            }
+        },
+        "backgroundmanager_handler.BackendReportRequestBody": {
+            "type": "object",
+            "properties": {
+                "EndTime": {
+                    "description": "EndTime,UTC",
+                    "type": "string",
+                    "default": "2023-07-02T00:00:00.000Z"
+                },
+                "StartTime": {
+                    "description": "StartTime,UTC",
+                    "type": "string",
+                    "default": "2023-07-01T00:00:00.000Z"
+                },
+                "Token": {
+                    "description": "Token",
+                    "type": "string",
+                    "default": "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
+                }
+            }
+        },
+        "backgroundmanager_handler.BackendReportResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "description": "資料",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendReportResponseBody"
+                        }
+                    ]
+                },
+                "status": {
+                    "description": "狀態欄",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.MaHttpResponseStatus"
+                        }
+                    ]
+                }
+            }
+        },
+        "backgroundmanager_handler.BackendReportResponseBody": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "description": "列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/backgroundmanager_handler.BackendReportDetail"
+                    }
+                },
+                "totalBet": {
+                    "description": "總下注",
+                    "type": "number"
+                },
+                "totalIncome": {
+                    "description": "總收入",
+                    "type": "number"
+                },
+                "totalJackpot": {
+                    "description": "總彩池",
+                    "type": "number"
+                },
+                "totalRake": {
+                    "description": "總抽水",
+                    "type": "number"
+                },
+                "totalRtp": {
+                    "description": "總RTP",
+                    "type": "number"
+                },
+                "totalSize": {
+                    "description": "總筆數",
+                    "type": "integer"
+                },
+                "totalWin": {
+                    "description": "總贏分",
+                    "type": "number"
+                }
+            }
+        },
+        "backgroundmanager_handler.BetSlipDetailsResponse": {
+            "type": "object",
+            "properties": {
+                "Data": {
+                    "description": "資料給予的地方",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BetSlipDetailsResponseData"
+                        }
+                    ]
+                },
+                "Status": {
+                    "description": "狀態",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendHttpResponseStatus"
+                        }
+                    ]
+                }
+            }
+        },
+        "backgroundmanager_handler.BetSlipDetailsResponseData": {
+            "type": "object",
+            "properties": {
+                "Currency": {
+                    "description": "幣別",
+                    "type": "string"
+                },
+                "EndTime": {
+                    "description": "成單時間",
+                    "type": "string"
+                },
+                "GameCode": {
+                    "description": "遊戲代碼",
+                    "type": "string"
+                },
+                "GameLog": {
+                    "description": "遊戲log",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "GameName": {
+                    "description": "遊戲名稱",
+                    "type": "string"
+                },
+                "GameResult": {
+                    "description": "遊戲結果",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.GameResultDetailList"
+                        }
+                    ]
+                },
+                "MemberAccount": {
+                    "description": "對方會員帳號",
+                    "type": "string"
+                },
+                "OwnerID": {
+                    "description": "總代理編號",
+                    "type": "string"
+                },
+                "Paccount": {
+                    "description": "代理帳號",
+                    "type": "string"
+                },
+                "ParentID": {
+                    "description": "代理編號",
+                    "type": "string"
+                },
+                "PlatformMemberID": {
+                    "description": "對方會員編號",
+                    "type": "string"
+                },
+                "RoundID": {
+                    "description": "局號",
+                    "type": "string"
+                },
+                "StatusID": {
+                    "description": "狀態碼\t0(正常)、1(會員不存在)、2(交易失敗)、3(寫賽果失敗)、4(寫log失敗)",
+                    "type": "integer"
+                }
+            }
+        },
+        "backgroundmanager_handler.BetSlipInfoResponse": {
+            "type": "object",
+            "properties": {
+                "Data": {
+                    "description": "資料給予的地方",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BetSlipInfoResponseData"
+                        }
+                    ]
+                },
+                "Status": {
+                    "description": "狀態",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendHttpResponseStatus"
+                        }
+                    ]
+                }
+            }
+        },
+        "backgroundmanager_handler.BetSlipInfoResponseData": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "description": "玩家帳號  ※字串長度限制36個字元",
+                    "type": "string"
+                },
+                "gameCode": {
+                    "description": "遊戲代碼",
+                    "type": "string"
+                },
+                "gametype": {
+                    "description": "遊戲類別",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "玩家編號",
+                    "type": "string"
+                },
+                "paccount": {
+                    "description": "代理帳號 (會由我方依據要求方來源判斷此欄位要不要有值，若無值則不用顯示)",
+                    "type": "string"
+                },
+                "roundid": {
+                    "description": "Round ID",
+                    "type": "string"
+                }
+            }
+        },
+        "backgroundmanager_handler.BetSlipListResponse": {
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "description": "資料筆數",
+                    "type": "integer"
+                },
+                "Data": {
+                    "description": "資料給予的地方",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/backgroundmanager_handler.BetSlipListResponseData"
+                    }
+                },
+                "Status": {
+                    "description": "狀態",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendHttpResponseStatus"
+                        }
+                    ]
+                }
+            }
+        },
+        "backgroundmanager_handler.BetSlipListResponseData": {
+            "type": "object",
+            "properties": {
+                "Bet": {
+                    "description": "下注",
+                    "type": "number"
+                },
+                "BetTime": {
+                    "description": "下注時間",
+                    "type": "string"
+                },
+                "EndTime": {
+                    "description": "結算時間",
+                    "type": "string"
+                },
+                "GameCode": {
+                    "description": "遊戲代碼",
+                    "type": "string"
+                },
+                "GameName": {
+                    "description": "遊戲名稱",
+                    "type": "string"
+                },
+                "MemberAccount": {
+                    "description": "對方會員帳號",
+                    "type": "string"
+                },
+                "Payout": {
+                    "description": "派彩",
+                    "type": "number"
+                },
+                "PayoutTime": {
+                    "description": "派彩時間",
+                    "type": "string"
+                },
+                "PlatformMemberID": {
+                    "description": "對方會員編號",
+                    "type": "string"
+                },
+                "RoundID": {
+                    "description": "局號",
+                    "type": "string"
+                },
+                "StatusID": {
+                    "description": "狀態碼\t0 正常\t1 會員不存在\t2 交易失敗\t3 寫賽果失敗\t4 寫log失敗",
+                    "type": "integer"
+                },
+                "WinLose": {
+                    "description": "輸贏",
+                    "type": "number"
+                }
+            }
+        },
+        "backgroundmanager_handler.ChangeTimeZoneRequestBody": {
+            "type": "object",
+            "properties": {
+                "TimeSpan": {
+                    "description": "時區",
+                    "type": "string",
+                    "default": "+08:00"
+                }
+            }
+        },
+        "backgroundmanager_handler.ChangeTimeZoneResponse": {
+            "type": "object",
+            "properties": {
+                "AvatarPath": {
+                    "description": "頭像路徑",
+                    "type": "string"
+                },
+                "Status": {
+                    "description": "狀態",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendHttpResponseStatus"
+                        }
+                    ]
+                },
+                "access_token": {
+                    "description": "訪問令牌",
+                    "type": "string"
+                }
+            }
+        },
+        "backgroundmanager_handler.GameResultDetail": {
+            "type": "object",
+            "properties": {
+                "Action": {
+                    "description": "動作",
+                    "type": "string"
+                },
+                "Amount": {
+                    "description": "金額",
+                    "type": "number"
+                },
+                "Time": {
+                    "description": "時間",
+                    "type": "string"
+                }
+            }
+        },
+        "backgroundmanager_handler.GameResultDetailList": {
+            "type": "object",
+            "properties": {
+                "GameResultDetails": {
+                    "description": "賽果詳情",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/backgroundmanager_handler.GameResultDetail"
+                    }
+                }
+            }
+        },
+        "backgroundmanager_handler.MaHttpResponseStatus": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "狀態碼",
+                    "type": "string"
+                },
+                "dateTime": {
+                    "description": "回應時間",
+                    "type": "string"
+                },
+                "latency": {
+                    "description": "latency",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "狀態訊息",
+                    "type": "string"
+                },
+                "tracecode": {
+                    "description": "追蹤碼",
+                    "type": "string"
+                },
+                "wallettype": {
+                    "description": "錢包類別transfer=轉帳錢包，single=單一錢包，ce=虛擬幣錢包",
+                    "type": "string"
+                }
+            }
+        },
+        "backgroundmanager_handler.MemberListResponse": {
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "description": "資料筆數",
+                    "type": "integer"
+                },
+                "Data": {
+                    "description": "資料給予的地方",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/backgroundmanager_handler.MemberListResponseData"
+                    }
+                },
+                "Status": {
+                    "description": "狀態",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendHttpResponseStatus"
+                        }
+                    ]
+                }
+            }
+        },
+        "backgroundmanager_handler.MemberListResponseData": {
+            "type": "object",
+            "properties": {
+                "Balance": {
+                    "description": "玩家餘額",
+                    "type": "number"
+                },
+                "Currency": {
+                    "description": "玩家幣別",
+                    "type": "string"
+                },
+                "MemberAccount": {
+                    "description": "我方會員編號",
+                    "type": "string"
+                },
+                "MemberID": {
+                    "description": "我方會員編號",
+                    "type": "integer"
+                },
+                "NewPoolID": {
+                    "description": "下次使用池編號",
+                    "type": "integer"
+                },
+                "PoolID": {
+                    "description": "使用中池編號",
+                    "type": "integer"
+                },
+                "RTP": {
+                    "description": "RTP",
+                    "type": "number"
+                }
+            }
+        },
+        "backgroundmanager_handler.SignInRequestBody": {
+            "type": "object",
+            "properties": {
+                "Account": {
+                    "description": "會員帳號",
+                    "type": "string",
+                    "default": "admin"
+                },
+                "Browser": {
+                    "description": "登入瀏覽器",
+                    "type": "string",
+                    "default": "chrome"
+                },
+                "Device": {
+                    "description": "登入設備",
+                    "type": "string",
+                    "default": "Win-PC"
+                },
+                "Password": {
+                    "description": "會員密碼",
+                    "type": "string",
+                    "default": "chimera@888"
+                },
+                "TimeSpan": {
+                    "description": "時區",
+                    "type": "string",
+                    "default": "+08:00"
+                }
+            }
+        },
+        "backgroundmanager_handler.SignInResponse": {
+            "type": "object",
+            "properties": {
+                "Authority": {
+                    "description": "權限",
+                    "type": "integer"
+                },
+                "AvatarPath": {
+                    "description": "頭像路徑",
+                    "type": "string"
+                },
+                "Status": {
+                    "description": "狀態",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendHttpResponseStatus"
+                        }
+                    ]
+                },
+                "access_token": {
+                    "description": "訪問令牌",
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "description": "刷新令牌",
+                    "type": "string"
+                }
+            }
+        },
+        "backgroundmanager_handler.SignOutResponse": {
+            "type": "object",
+            "properties": {
+                "Status": {
+                    "description": "狀態",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backgroundmanager_handler.BackendHttpResponseStatus"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "description": "輸入Bearer {jwtToken}",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+package respmsg
+
+/////////////////////////////
+////    API Response Message
+/////////////////////////////
+
+const (
+	Success = "Success"
+)

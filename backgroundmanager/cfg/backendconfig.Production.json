@@ -1,0 +1,39 @@
+{
+    "application": {
+        "listenPort": ":60180",
+        "mode": "Production"
+    },
+    "log": {
+        "maxlogsize": 100,
+        "maxbackup": 300,
+        "maxage": 7,
+        "svcname": "zlog",
+        "logFilePath": "C:/Logs/ManageBackground_go/%s.log",
+        "defaultLogLevel": "info"
+    },
+    "sql": {
+        "connectString": {
+            "master": "sqlserver://sa:c6abacd3@10.140.0.5:1433?database=Queen"
+        },
+        "maxOpenConns": 10,
+        "maxIdleConns": 2,
+        "maxIdleSecond": 5
+    },
+    "jwt": {
+        "signKey": "rVdeq796a6dXuNHFKmfPCt53znaMu8KE"
+    },
+    "api": {
+        "timezone": 8
+    },
+    "thirdApi": {
+        "CQ9Games": {
+            "Host": "https://apia.cqgame.cc",
+            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnYW1laGFsbCI6ImNxOSIsInRlYW0iOiJDQyIsImp0aSI6IjU2MDAyMDg0NyIsImlhdCI6MTYxNTQ1MzM3MCwiaXNzIjoiQ3lwcmVzcyIsInN1YiI6IkdTVG9rZW4ifQ.Uny2YY5u94x-65Pzbc3af0bGH41-ClQFKlC3gU32sPs",
+            "GameHall": "cq9",
+            "TeamID": "CC"
+        },
+        "LineNotify": {
+            "Token": "BwxehcYfCFYCbDlG7AcglxZ2WpkZfCCFhLu9RNQ6qQK"
+        }
+    }
+}

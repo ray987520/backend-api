@@ -1,0 +1,2057 @@
+definitions:
+  handler.AuthPlayerResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.AuthPlayerResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.AuthPlayerResponseData:
+    properties:
+      account:
+        description: 玩家帳號※字串長度限制36個字元
+        type: string
+      balance:
+        description: 玩家餘額
+        type: number
+      betlevel:
+        description: 押注限額
+        type: integer
+      betthreshold:
+        allOf:
+        - $ref: '#/definitions/handler.BetThreshold'
+        description: 限紅閥值
+      cobrand:
+        allOf:
+        - $ref: '#/definitions/handler.Cobrand'
+        description: 聯名遊戲資訊
+      currency:
+        description: 玩家幣別
+        type: string
+      gamecode:
+        description: 遊戲代碼
+        type: string
+      gamehall:
+        description: 遊戲廠商
+        type: string
+      gameplat:
+        description: 遊戲平台
+        type: string
+      gametech:
+        description: 使用技術
+        type: string
+      gametype:
+        description: 遊戲類型
+        type: string
+      id:
+        description: 玩家id※此值為唯一值，請勿使用 account 替代 id
+        type: string
+      istestss:
+        description: 測試代理
+        type: boolean
+      ownerid:
+        description: 上層代理id
+        type: string
+      parentid:
+        description: 代理id
+        type: string
+      webid:
+        description: 押注限額表代號
+        type: integer
+    type: object
+  handler.BetThreshold:
+    properties:
+      bettype_maximum:
+        description: 單區最大限額 (限押分類遊戲)
+        type: number
+      default:
+        description: 籌碼預設值
+        type: number
+      maximum:
+        description: 籌碼最大值
+        type: number
+      minimum:
+        description: 籌碼最小值
+        type: number
+      roombet:
+        description: 最少為空值，最多會有 6 個元素
+        items:
+          type: number
+        type: array
+      round_maximum:
+        description: 單場總限注額 (彩票類遊戲使用)
+        type: number
+    type: object
+  handler.BonusResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.BonusResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.BonusResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.Cobrand:
+    properties:
+      createat:
+        description: createat
+        type: string
+      images:
+        description: 圖片資訊
+        items:
+          type: string
+        type: array
+      ownerid:
+        description: ownerid
+        type: string
+      parentid:
+        description: parentid
+        type: string
+      permissions:
+        allOf:
+        - $ref: '#/definitions/handler.Permissions'
+        description: 聯名遊戲資訊權限
+      updateat:
+        description: updateat
+        type: string
+    type: object
+  handler.CreateDetailTokenResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.CreateDetailTokenResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.CreateDetailTokenResponseData:
+    properties:
+      detailtoken:
+        description: 遊戲細單token
+        type: string
+      playerdetailurl:
+        description: 玩家端遊戲細單客端網址
+        type: string
+      systemdetailurl:
+        description: 系統商遊戲細單客端網址
+        type: string
+    type: object
+  handler.CreateGameTokenResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.CreateGameTokenResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.CreateGameTokenResponseData:
+    properties:
+      gameclienturl:
+        description: 遊戲客端網址
+        type: string
+      gametoken:
+        description: 玩家遊戲token
+        type: string
+    type: object
+  handler.CurrencyListResponse:
+    properties:
+      data:
+        description: 資料給予的地方
+        items:
+          $ref: '#/definitions/handler.CurrencyListResponseData'
+        type: array
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.CurrencyListResponseData:
+    properties:
+      currency:
+        description: 支援幣別
+        type: string
+      rate:
+        description: 匯率
+        type: number
+      recommendRate:
+        description: 建議轉換比率
+        type: number
+    type: object
+  handler.DetailTokenResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.DetailTokenResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.DetailTokenResponseData:
+    properties:
+      account:
+        description: 玩家帳號※字串長度限制36個字元
+        type: string
+      gametype:
+        description: 遊戲類別
+        type: string
+      id:
+        description: 玩家id
+        type: string
+      paccount:
+        description: 代理帳號 (會由我方依據要求方來源判斷此欄位要不要有值，若無值則不用顯示)
+        type: string
+      roundid:
+        description: Round ID
+        type: string
+    type: object
+  handler.GaHttpResponseStatus:
+    properties:
+      code:
+        description: 狀態碼
+        type: string
+      dateTime:
+        description: 回應時間
+        type: string
+      latency:
+        description: latency,TOCHECK:文件沒有但實際CQ9 response有
+        type: string
+      message:
+        description: 狀態訊息
+        type: string
+      tracecode:
+        description: 追蹤碼
+        type: string
+      wallettype:
+        description: 錢包類別transfer=轉帳錢包，single=單一錢包，ce=虛擬幣錢包
+        type: string
+    type: object
+  handler.GameBetResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.GameBetResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.GameBetResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.GameEndResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.GameEndResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.GameEndResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.GameWinCancelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.GameWinCancelResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.GameWinCancelResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.GameWinResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.GameWinResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.GameWinResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.GetOrderDetail:
+    properties:
+      bonus:
+        description: Bonus
+        type: integer
+      freegame:
+        description: Free game
+        type: integer
+      luckydraw:
+        description: Lucky draw
+        type: integer
+    type: object
+  handler.GetOrderEvent:
+    properties:
+      action:
+        description: 行為
+        type: string
+      amount:
+        description: 贏分金額 ※最大長度為12位數，及小數點後4位
+        type: number
+      eventtime:
+        description: 事件發生時間
+        type: string
+      mtcode:
+        description: 交易代碼
+        type: string
+      recordid:
+        description: xxx
+        type: string
+    type: object
+  handler.GetOrderResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.GetOrderResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.GetOrderResponseData:
+    properties:
+      order:
+        allOf:
+        - $ref: '#/definitions/handler.GetOrderResponseDetail'
+        description: 注單
+    type: object
+  handler.GetOrderResponseDetail:
+    properties:
+      account:
+        description: 帳號※字串長度限制36個字元
+        type: string
+      balance:
+        description: 玩家餘額
+        type: number
+      bets:
+        description: 本局押分,TOCHECK:文件表格跟範例的json tag不同
+        type: number
+      cardwin:
+        description: 派彩加成※最大長度為12位數，及小數點後4位
+        type: number
+      createtime:
+        description: 事件發生時間
+        type: string
+      detail:
+        description: 遊戲細節
+        items:
+          $ref: '#/definitions/handler.GetOrderDetail'
+        type: array
+      endroundtime:
+        description: DB建立時間
+        type: string
+      eventlist:
+        description: 遊戲行為
+        items:
+          $ref: '#/definitions/handler.GetOrderEvent'
+        type: array
+      finaltime:
+        description: 最後異動時間
+        type: string
+      gamecode:
+        description: 遊戲代號
+        type: string
+      gamehall:
+        description: 遊戲廠商
+        type: string
+      gametoken:
+        description: 玩家遊戲token
+        type: string
+      gametype:
+        description: 遊戲類別
+        type: string
+      giventype:
+        description: 免費券取得類型 1=活動贈送 101=代理贈送 111=寶箱贈送 112=商城購買
+        type: string
+      indexid:
+        description: 訂單索引
+        type: string
+      jackpotcontribution:
+        description: 彩池獎金貢獻值
+        items:
+          type: number
+        type: array
+      jackpots:
+        description: 彩金金額
+        type: number
+      jackpottype:
+        description: 彩池獎金類別
+        type: string
+      orderid:
+        description: 注單編號,TOCHECK:CQ9 response跟C#代碼有orderid節點,但文件表格沒有範例有
+        type: string
+      ownerid:
+        description: 上層代理id
+        type: string
+      parentid:
+        description: 代理id
+        type: string
+      platform:
+        description: 遊戲平台
+        type: string
+      playerid:
+        description: 玩家ID
+        type: string
+      rabbitmq:
+        description: Rabbit MQ 狀態
+        type: string
+      rake:
+        description: 抽水金額
+        type: number
+      roomfee:
+        description: 開房費用
+        type: number
+      roundid:
+        description: 局號
+        type: string
+      singlerowbet:
+        description: 是否為滾輪遊戲
+        type: boolean
+      status:
+        description: 訂單狀態
+        type: string
+      ticketbets:
+        description: 免費券下注額
+        type: number
+      ticketid:
+        description: 道具編號
+        type: string
+      tickettype:
+        description: 免費券類型 1=免費遊戲(獲得一局free game) 2=免費 spin(獲得一次free spin)
+        type: string
+      usecard:
+        description: 是否派彩加成
+        type: boolean
+      winpc:
+        description: 該遊戲玩家從PC贏得的金額
+        type: number
+      wins:
+        description: win 金額(可為負值),TOCHECK:文件表格跟範例的json tag不同
+        type: number
+    type: object
+  handler.LogoutPlayerResponse:
+    properties:
+      data:
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.MoneyInResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.MoneyInResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.MoneyInResponseData:
+    properties:
+      balance:
+        description: 交易後餘額
+        type: number
+      before:
+        description: 交易前餘額
+        type: number
+      currency:
+        description: 幣別
+        type: string
+      tracecode:
+        description: 追蹤碼
+        type: number
+    type: object
+  handler.MoneyOutResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.MoneyOutResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.MoneyOutResponseData:
+    properties:
+      balance:
+        description: 交易後餘額
+        type: number
+      before:
+        description: 交易前餘額
+        type: number
+      currency:
+        description: 幣別
+        type: string
+      tracecode:
+        description: 追蹤碼
+        type: number
+    type: object
+  handler.OrderCreditResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.OrderCreditResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.OrderCreditResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.OrderDebitResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.OrderDebitResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.OrderDebitResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.Permissions:
+    properties:
+      basic:
+        description: 獨家設定基本款權限，若為true，需要去讀取image 物件內 category 為 basic 的相關資訊
+        type: boolean
+      custom:
+        description: 自定義權限，若為true，需要去讀取image 物件內 category 為 custom 的相關資訊
+        type: boolean
+    type: object
+  handler.PlayerOrderResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.PlayerOrderResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.PlayerOrderResponseData:
+    properties:
+      url:
+        description: 玩家注單網址
+        type: string
+    type: object
+  handler.PromotionIcon:
+    properties:
+      json:
+        description: 活動id
+        type: string
+      png:
+        description: 圖片url
+        type: string
+    type: object
+  handler.PromotionLinkResponse:
+    properties:
+      data:
+        description: 資料給予的地方
+        type: string
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.PromotionResponse:
+    properties:
+      data:
+        description: 資料給予的地方
+        items:
+          $ref: '#/definitions/handler.PromotionResponseData'
+        type: array
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.PromotionResponseData:
+    properties:
+      haslink:
+        description: 是否為小遊戲連結
+        type: boolean
+      icon:
+        allOf:
+        - $ref: '#/definitions/handler.PromotionIcon'
+        description: 圖片資訊
+      imageurl:
+        description: 推廣活動icon網址
+        type: string
+      name:
+        description: 活動名稱
+        type: string
+      promoid:
+        description: 活動id
+        type: string
+      promourl:
+        description: 推廣活動網址
+        type: string
+    type: object
+  handler.RecoverGametokenByRoundIDResponse:
+    properties:
+      data:
+        description: 資料給予的地方
+        type: string
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.RecoverGametokenByTimeRangeResponse:
+    properties:
+      data:
+        description: 資料給予的地方
+        items:
+          type: string
+        type: array
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.RollinResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.RollinResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.RollinResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.RolloutResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.RolloutResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.RolloutResponseData:
+    properties:
+      amount:
+        description: 取款金額
+        type: number
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.RoundCheckResponse:
+    properties:
+      data:
+        description: 資料給予的地方
+        items:
+          type: string
+        type: array
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.RoundDetailEvent:
+    properties:
+      action:
+        description: 行為
+        type: string
+      amount:
+        description: 交易量
+        type: number
+      eventtime:
+        description: 時間
+        type: string
+      mtcode:
+        description: 交易代碼
+        type: string
+    type: object
+  handler.RoundDetailResponse:
+    properties:
+      data:
+        description: 資料給予的地方
+        items:
+          $ref: '#/definitions/handler.RoundDetailResponseData'
+        type: array
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.RoundDetailResponseData:
+    properties:
+      account:
+        description: 帳號※字串長度限制36個字元
+        type: string
+      createtime:
+        description: 事件發生時間
+        type: string
+      event:
+        allOf:
+        - $ref: '#/definitions/handler.RoundDetailEvent'
+        description: 事件
+      gamecode:
+        description: 遊戲代碼
+        type: string
+      gamehall:
+        description: 遊戲廠商
+        type: string
+      gametoken:
+        description: 遊戲Token
+        type: string
+      gametype:
+        description: 遊戲種類
+        type: string
+      indexid:
+        description: 訂單索引
+        type: string
+      ownerid:
+        description: 總代理ID
+        type: string
+      parentid:
+        description: 代理ID
+        type: string
+      platform:
+        description: 遊戲平台
+        type: string
+      playerid:
+        description: 玩家ID
+        type: string
+      roomfee:
+        description: 開房費用
+        type: number
+      status:
+        description: 訂單狀態
+        type: string
+      ticketid:
+        description: 道具編號
+        type: string
+    type: object
+  handler.ShowBalanceResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.ShowBalanceResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.ShowBalanceResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.TableGameRefundResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.TableGameRefundResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.TableGameRefundResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.TableRollinResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.TableRollinResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.TableRollinResponseData:
+    properties:
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+  handler.TableRolloutResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/handler.TableRolloutResponseData'
+        description: 資料給予的地方
+      status:
+        allOf:
+        - $ref: '#/definitions/handler.GaHttpResponseStatus'
+        description: 狀態欄
+    type: object
+  handler.TableRolloutResponseData:
+    properties:
+      amount:
+        description: 取款金額
+        type: number
+      balance:
+        description: 玩家餘額
+        type: number
+      currency:
+        description: 玩家幣別
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /gamepool/CC/game/bet:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 玩家遊戲token
+        in: formData
+        name: gametoken
+        required: true
+        type: string
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: 下注金額※最大長度為12位數，及小數點後4位
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      - description: 下注時間(UTC-4)
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.GameBetResponse'
+      security:
+      - Bearer: []
+      summary: Probability Game Bet (遊戲回合下注)
+      tags:
+      - Probability Game Flow
+  /gamepool/CC/game/bet/refund:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      - description: 玩家id
+        in: formData
+        name: userid
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.TableGameRefundResponse'
+      security:
+      - Bearer: []
+      summary: Probability / Table Game Refund (下注取消)
+      tags:
+      - Table Flow
+  /gamepool/CC/game/currency:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CurrencyListResponse'
+      security:
+      - Bearer: []
+      summary: Currency List (幣別列表)
+      tags:
+      - Infos
+  /gamepool/CC/game/detailtoken:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 細單連結token
+        in: formData
+        name: token
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.DetailTokenResponse'
+      security:
+      - Bearer: []
+      summary: Detail Token (驗證細單Token正確性並取回相關細單資訊)
+      tags:
+      - Order Detail(Game Result)
+  /gamepool/CC/game/end:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 玩家遊戲token
+        in: formData
+        name: gametoken
+        required: true
+        type: string
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: jackpot金額
+        in: formData
+        name: jackpot
+        type: number
+      - description: jackpot種類
+        in: formData
+        name: jackpottype
+        type: string
+      - collectionFormat: csv
+        description: jackot貢獻值
+        in: formData
+        items:
+          type: number
+        name: jackpotcontriubtion
+        type: array
+      - description: "傳送此Slot\tgame的FreeGame,LuckyDraw,Bonus的場次"
+        in: formData
+        name: detail
+        type: string
+      - description: 結算時間(UTC-4)
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      - collectionFormat: csv
+        description: 殺率
+        in: formData
+        items:
+          type: number
+        name: rtp
+        type: array
+      - description: 是否為再旋轉形成的注單
+        in: formData
+        name: singlerowbet
+        type: boolean
+      - description: 客端ip
+        in: formData
+        name: ip
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.GameEndResponse'
+      security:
+      - Bearer: []
+      summary: Probability Game End (遊戲回合結算)
+      tags:
+      - Probability Game Flow
+  /gamepool/CC/game/generateoneroundcache:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - default: CC123456ab05:cq9
+        description: 訂單索引-> roundid:xxx
+        in: formData
+        name: indexid
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RecoverGametokenByRoundIDResponse'
+      security:
+      - Bearer: []
+      summary: Recover Gametoken by RoundID (當重送 End 時，遇到 error code 9 Invalid GameToken.，即可使用這個API重新激活相對應)
+      tags:
+      - Resend mechanism Flow
+  /gamepool/CC/game/generateroundcache:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - default: "2023-07-01T00:00:00.000-04:00"
+        description: 開始時間
+        in: formData
+        name: fromdate
+        required: true
+        type: string
+      - default: "2023-07-24T00:00:00.000-04:00"
+        description: 結束時間(需小於現在時間一個小時)
+        in: formData
+        name: todate
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RecoverGametokenByTimeRangeResponse'
+      security:
+      - Bearer: []
+      summary: Recover Gametoken by time range (當重送end時，遇到 error code 9 Invalid GameToken,即可使用這個
+        API 重新激活相對應時間區間內的 gametoken)
+      tags:
+      - Resend mechanism Flow
+  /gamepool/CC/game/getorder:
+    get:
+      parameters:
+      - default: CC123456ab07:cq9
+        description: 訂單索引-> roundid:xxx
+        in: query
+        name: indexid
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.GetOrderResponse'
+      security:
+      - Bearer: []
+      summary: Get Order (查詢注單內容)
+      tags:
+      - Resend mechanism Flow
+  /gamepool/CC/game/playerorder:
+    get:
+      parameters:
+      - description: 玩家遊戲token
+        in: query
+        name: gametoken
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.PlayerOrderResponse'
+      security:
+      - Bearer: []
+      summary: Player Order URL(取得玩家注單網址)
+      tags:
+      - Others
+  /gamepool/CC/game/promo:
+    get:
+      parameters:
+      - description: 玩家遊戲token
+        in: query
+        name: gametoken
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.PromotionResponse'
+      security:
+      - Bearer: []
+      summary: Promotion(檢查目前是否有活動列表)
+      tags:
+      - Others
+  /gamepool/CC/game/promo/link:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 遊戲token
+        in: formData
+        name: gametoken
+        required: true
+        type: string
+      - description: 活動id
+        in: formData
+        name: promoid
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.PromotionLinkResponse'
+      security:
+      - Bearer: []
+      summary: Promotion Link(產生活動連結)
+      tags:
+      - Others
+  /gamepool/CC/game/roundcheck:
+    get:
+      description: |-
+        1.需於每個小時，定時使用 Round Check 對未完成的回合進行補單、退款行為。 ※每筆資料可以使用Round Detail、Get Order 得知我司狀態 舉例: 當 09:00 時 撈取 07:00~08:00，並每小時以此類推 對區間內的數據做補單、退款。
+        ※若貴司的紀錄為未成單卻在 Get order 撈取到該單據請直接使用注單內之資料將該注單成單
+        2.補單流程是持續性的機制，須執行至所有未完成的回合成功，流程最少須持續24小時。 舉例: 當 09:00 時 執行 07:00~08:00 補單，並有回合未完成情況下，須至下次補單時繼續執行，直到該回合成功或是24小時後方可停止對該回合的補單。
+        3.執行補單時，需和當下時間保持一定"時間區間"(依照遊戲自身演繹時間進行推算)，避免對當下進行中遊戲執行補單和退款。
+        4.補單的datetime請使用補單當下時間
+      parameters:
+      - default: "2023-07-01T00:00:00.000-04:00"
+        description: 開始時間
+        in: query
+        name: fromdate
+        required: true
+        type: string
+      - default: "2023-07-24T00:00:00.000-04:00"
+        description: 結束時間
+        in: query
+        name: todate
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RoundCheckResponse'
+      security:
+      - Bearer: []
+      summary: Round Check (查詢未完成注單 (RoundID 必須符合格式才能查詢到))
+      tags:
+      - Resend mechanism Flow
+  /gamepool/CC/game/rounddetail:
+    get:
+      description: |-
+        依照查看到的狀態去做相對應的動作
+        *Bet complete、init，且你的遊戲DB沒有 Win 的資料或相對應的後續 ➔ Refund
+        *有Bet complete 且 Win init，且你的遊戲DB有相對應的資料 ➔ End
+        *Rollout complete、init，但你的遊戲DB沒有相對應資料 ➔ refund
+        *Rollout complete 且 Rollin init，且你的遊戲DB有相對應的資料 ➔ Rollin
+        *Bet / Rollout failure 不執行任何動作
+        *Bet / Rollout status 為 refunded 不執行任何動作
+      parameters:
+      - default: CC12334ab:cq9
+        description: 訂單索引-> roundid:xxx
+        in: query
+        name: indexid
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RoundDetailResponse'
+      security:
+      - Bearer: []
+      summary: Round Detail (查詢注單內容)
+      tags:
+      - Resend mechanism Flow
+  /gamepool/CC/game/win:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: win 金額需要包含jackpot金額
+      parameters:
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 玩家遊戲token
+        in: formData
+        name: gametoken
+        required: true
+        type: string
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: 贏分金額※最大長度為12位數，及小數點後4位
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      - description: 贏分時間(UTC-4)
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      - description: 派彩加成※最大長度為12位數，及小數點後4位
+        in: formData
+        name: cardwin
+        type: number
+      - description: 是否派彩加成
+        in: formData
+        name: usecard
+        type: boolean
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.GameWinResponse'
+      security:
+      - Bearer: []
+      summary: Probability Game Win (遊戲回合贏分)
+      tags:
+      - Probability Game Flow
+  /gamepool/CC/game/win/cancel:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.GameWinCancelResponse'
+      security:
+      - Bearer: []
+      summary: Probability Game Win Cancel (贏分取消)
+      tags:
+      - Probability Game Flow
+  /gamepool/CC/order/bonus:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: 遊戲類型
+        in: formData
+        name: gametype
+        required: true
+        type: string
+      - description: 帳號
+        in: formData
+        name: account
+        required: true
+        type: string
+      - description: 上層代理id
+        in: formData
+        name: ownerid
+        required: true
+        type: string
+      - description: 代理ID
+        in: formData
+        name: parentid
+        required: true
+        type: string
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: 紅利金額
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: 派發紅利時間
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.BonusResponse'
+      security:
+      - Bearer: []
+      summary: Bonus (派發紅利)
+      tags:
+      - Game Result Excepition Processing
+  /gamepool/CC/order/credit:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: 補扣款金額※最大長度為12位數，及小數點後4位
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: 補扣款時間
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.OrderCreditResponse'
+      security:
+      - Bearer: []
+      summary: Order Credit (注單補款)
+      tags:
+      - Game Result Excepition Processing
+  /gamepool/CC/order/debit:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: 補扣款金額※最大長度為12位數，及小數點後4位
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: 補扣款時間
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.OrderDebitResponse'
+      security:
+      - Bearer: []
+      summary: Order Debit (注單補扣款)
+      tags:
+      - Game Result Excepition Processing
+  /gamepool/CC/player/auth:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: ownerid = parentid 表示此parentid為總代理 ownerid ≠ parentid 表示此parentid為子代理
+        請務必紀錄parentid與ownerid，否則將產生對帳的疑慮
+      parameters:
+      - description: 玩家遊戲token
+        in: formData
+        name: gametoken
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.AuthPlayerResponse'
+      security:
+      - Bearer: []
+      summary: Auth (驗證 Game Token，並且回傳此玩家的所有設定資訊)
+      tags:
+      - Player
+  /gamepool/CC/player/balance:
+    get:
+      parameters:
+      - default: 5995123703a236000175b842
+        description: 玩家id
+        in: query
+        name: id
+        required: true
+        type: string
+      - default: CC01
+        description: 遊戲代號
+        in: query
+        name: gamecode
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ShowBalanceResponse'
+      security:
+      - Bearer: []
+      summary: Balance (查詢餘額)
+      tags:
+      - Player
+  /gamepool/CC/player/logout:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: 玩家遊戲token
+        in: formData
+        name: gametoken
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.LogoutPlayerResponse'
+      security:
+      - Bearer: []
+      summary: Logout (登出)
+      tags:
+      - Player
+  /gamepool/CC/rollin:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: |-
+        *win 金額需要包含jackpot金額
+        *bet 金額需包含購買武器金額
+        *Rollin amount = rollout amount - bet + win
+      parameters:
+      - description: 玩家遊戲token
+        in: formData
+        name: gametoken
+        required: true
+        type: string
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: 結算金額※最大長度為12位數，及小數點後4位
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: bet金額
+        in: formData
+        name: bet
+        required: true
+        type: number
+      - description: win 金額 (含jackpot)
+        in: formData
+        name: win
+        required: true
+        type: number
+      - description: jackpot金額
+        in: formData
+        name: jackpot
+        type: number
+      - description: 購買武器金額
+        in: formData
+        name: item
+        type: number
+      - description: 遊戲獎金金額
+        in: formData
+        name: reward
+        type: number
+      - description: 結算時間
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: 客端ip
+        in: formData
+        name: ip
+        type: string
+      - description: 派彩加成※最大長度為12位數，及小數點後4位
+        in: formData
+        name: cardwin
+        type: number
+      - description: 是否派彩加成
+        in: formData
+        name: usecard
+        type: boolean
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RollinResponse'
+      security:
+      - Bearer: []
+      summary: Probability Game Rollin (遊戲錢包轉至個人錢包)
+      tags:
+      - Probability Game Flow
+  /gamepool/CC/rollout:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: 當玩家沒有遊戲行為( bet = 0, win = 0 )需要呼叫 refund
+      parameters:
+      - description: 玩家遊戲token
+        in: formData
+        name: gametoken
+        required: true
+        type: string
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: 取款金額※最大長度為12位數，及小數點後4位
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: 取款時間(UTC-4)
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: '是否取用全部餘額(default: false, 若為true，可不傳amount欄位)'
+        in: formData
+        name: takeall
+        type: boolean
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RolloutResponse'
+      security:
+      - Bearer: []
+      summary: Probability Game Rollout (個人錢包轉至遊戲錢包)
+      tags:
+      - Probability Game Flow
+  /gamepool/CC/table/rollout:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: 當玩家沒有遊戲行為( bet = 0, win = 0 )需要呼叫 refund
+      parameters:
+      - description: 玩家遊戲token
+        in: formData
+        name: gametoken
+        required: true
+        type: string
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: 取款金額※最大長度為12位數，及小數點後4位
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: 取款時間(UTC-4)
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: 玩家角色為庄家(banker) or 閒家(player)
+        in: formData
+        name: gamerole
+        required: true
+        type: string
+      - description: 對戰玩家是否有真人[pc|human] ※此欄位為牌桌遊戲使用，非牌桌遊戲此欄位值為空字串
+        in: formData
+        name: bankertype
+        required: true
+        type: string
+      - description: '是否取用全部餘額(default: false, 若為true，可不傳amount欄位)'
+        in: formData
+        name: takeall
+        type: boolean
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.TableRolloutResponse'
+      security:
+      - Bearer: []
+      summary: Table Rollout (將金額從個人錢包轉至遊戲錢包)
+      tags:
+      - Table Flow
+  /gamepool/v2/CC/table/rollin:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Rollin amount = rollout amount + win - rake - roomfee
+      parameters:
+      - description: 玩家遊戲token
+        in: formData
+        name: gametoken
+        required: true
+        type: string
+      - description: 玩家id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 交易代碼
+        in: formData
+        name: mtcode
+        required: true
+        type: string
+      - description: 遊戲回合編號
+        in: formData
+        name: round
+        required: true
+        type: string
+      - description: 結算金額※最大長度為12位數，及小數點後4位
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: bet金額
+        in: formData
+        name: bet
+        required: true
+        type: number
+      - description: win 金額(可為負值) ※含jackpot、不含抽水
+        in: formData
+        name: win
+        required: true
+        type: number
+      - description: 抽水金額
+        in: formData
+        name: rake
+        required: true
+        type: number
+      - description: 玩家角色為庄家(banker) or 閒家(player)
+        in: formData
+        name: gamerole
+        required: true
+        type: string
+      - description: 對戰玩家是否有真人[pc|human] pc：對戰玩家沒有真人 human：對戰玩家有真人 ※此欄位為牌桌遊戲使用，非牌桌遊戲此欄位值為空字串
+        in: formData
+        name: bankertype
+        required: true
+        type: string
+      - description: 結算時間(UTC-4)
+        in: formData
+        name: datetime
+        required: true
+        type: string
+      - description: 遊戲代號
+        in: formData
+        name: gamecode
+        required: true
+        type: string
+      - description: 開房費用
+        in: formData
+        name: roomfee
+        type: number
+      - description: 有效投注
+        in: formData
+        name: validbet
+        required: true
+        type: number
+      - description: 局號
+        in: formData
+        name: roundnumber
+        type: string
+      - description: 真人遊戲類別 1：百家樂 4：龍虎
+        in: formData
+        name: tabletype
+        type: string
+      - description: 桌號
+        in: formData
+        name: tableid
+        type: string
+      - collectionFormat: csv
+        description: 下注玩法※真人參數說明https://hackmd.io/tbT46brhReC4Aq5mz5HM1w?view#bettype
+        in: formData
+        items:
+          type: integer
+        name: bettype
+        type: array
+      - description: 遊戲結果※真人參數說明https://hackmd.io/tbT46brhReC4Aq5mz5HM1w?view#bettype
+        in: formData
+        name: gameresult
+        type: string
+      - description: 客端ip
+        in: formData
+        name: ip
+        type: string
+      - description: 派彩加成※最大長度為12位數，及小數點後4位
+        in: formData
+        name: cardwin
+        type: number
+      - description: 是否派彩加成
+        in: formData
+        name: usecard
+        type: boolean
+      - description: 視訊下注明細※真人參數說明https://hackmd.io/tbT46brhReC4Aq5mz5HM1w?view#bettype
+        in: formData
+        name: livebetdetail
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.TableRollinResponse'
+      security:
+      - Bearer: []
+      summary: Table Rollin Version 2 (遊戲錢包轉至個人錢包)
+      tags:
+      - Table Flow
+  /peace/detailtoken:
+    get:
+      description: |-
+        roundid 、gamecode 與 gametype 需要是正確的才能產出detailtoken
+        {相對應站點的URL}/peace/detailtoken?roundid=123456789&gamecode=1&gametype=slot
+      parameters:
+      - default: CC123456ab07
+        description: 遊戲回合編號
+        in: query
+        name: roundid
+        required: true
+        type: string
+      - default: CC1001
+        description: 遊戲代碼
+        in: query
+        name: gamecode
+        required: true
+        type: string
+      - default: fish
+        description: 遊戲類型
+        in: query
+        name: gametype
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateDetailTokenResponse'
+      security:
+      - Bearer: []
+      summary: 創建detailtoken(遊戲細單客端網址)
+      tags:
+      - 接入輔助工具
+  /peace/gametoken:
+    get:
+      description: |-
+        隨機玩家產生gametoken，指定gametype、指定gamecode {相對應站點的URL}/peace/gametoken?account=random&gametype=slot&gamecode=3
+        指定玩家產生gametoken，指定gametype、指定gamecode {相對應站點的URL}/peace/gametoken?account={指定玩家帳號}&gametype=slot&gamecode=3
+        指定玩家產生gametoken，指定currency、指定gametype、指定gamecode {相對應站點的URL}/peace/gametoken?account={指定玩家帳號}&gametype=slot&gamecode=3&currency=CNY
+      parameters:
+      - default: random
+        description: 玩家帳號(隨機玩家:random)
+        in: query
+        name: account
+        required: true
+        type: string
+      - default: fish
+        description: 遊戲類型(測試:slot)
+        in: query
+        name: gametype
+        required: true
+        type: string
+      - default: CC1001
+        description: 遊戲代碼(測試:CC01)
+        in: query
+        name: gamecode
+        required: true
+        type: string
+      - description: 幣別(測試:CNY)
+        in: query
+        name: currency
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateGameTokenResponse'
+      security:
+      - Bearer: []
+      summary: 創建gametoken(用於測試遊戲客端網址)
+      tags:
+      - 接入輔助工具
+  /peace/money/in:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: |-
+        account 與 amount 需要是正確的才能存錢至測試帳號
+        {相對應站點的URL}/peace/money/in
+      parameters:
+      - default: test001
+        description: 玩家帳號
+        in: formData
+        name: account
+        required: true
+        type: string
+      - default: 10.1
+        description: 金額
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - default: CNY
+        description: 使用幣別※目前支援CNY, MYR, THB, RUB, JPY, KRW, IDR, USD, IDR(K), VND(K),
+          EUR, SGD, HKD, INR, MMK, VND
+        in: formData
+        name: currency
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.MoneyInResponse'
+      security:
+      - Bearer: []
+      summary: 存款(將錢存至測試帳號)
+      tags:
+      - 接入輔助工具
+  /peace/money/out:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: |-
+        account 與 amount 需要是正確的才能從測試帳號提款
+        {相對應站點的URL}/peace/money/out
+      parameters:
+      - default: test001
+        description: 玩家帳號
+        in: formData
+        name: account
+        required: true
+        type: string
+      - default: 10.1
+        description: 金額
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - default: CNY
+        description: 使用幣別※目前支援CNY, MYR, THB, RUB, JPY, KRW, IDR, USD, IDR(K), VND(K),
+          EUR, SGD, HKD, INR, MMK, VND
+        in: formData
+        name: currency
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.MoneyOutResponse'
+      security:
+      - Bearer: []
+      summary: 提款(將錢從測試帳號提出)
+      tags:
+      - 接入輔助工具
+securityDefinitions:
+  Bearer:
+    description: 輸入Bearer {jwtToken}
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
